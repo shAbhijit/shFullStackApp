@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ESNEXT",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "incremental": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strictPropertyInitialization": false,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts", "prisma/seed.ts"],
+  "exclude": ["node_modules", "dist"]
+}

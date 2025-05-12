@@ -1,0 +1,15 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "../",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "setupFilesAfterEnv": ["./test/global-setup.ts"],
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "collectCoverage": true,
+  "coverageDirectory": "./coverage/e2e",
+  "reporters": [
+    "default", ["summary", { "summaryThreshold": 1 }]
+  ]
+}

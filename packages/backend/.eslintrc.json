@@ -1,0 +1,21 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["import", "simple-import-sort", "node", "@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "plugin:regexp/recommended"
+  ],
+  "rules": {
+    "import/no-cycle": "error",
+    "node/no-extraneous-import": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-non-null-assertion": "error",
+    "regexp/use-ignore-case": "off",
+    "no-console": "error"
+  }
+}

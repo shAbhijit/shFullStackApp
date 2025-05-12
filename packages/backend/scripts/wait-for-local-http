@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script waits for http server to accept connections
+
+RETRIES=50
+
+until curl http://localhost:3000/health > /dev/null 2>&1 || [ $RETRIES -eq 0 ]; do
+  echo "Waiting for HTTP server, $((RETRIES--)) remaining attempts..."
+  sleep 1
+done
