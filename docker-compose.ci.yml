@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   backend:
-    container_name: books-backend
+    container_name: backend
     image: backend
     build:
       context: .

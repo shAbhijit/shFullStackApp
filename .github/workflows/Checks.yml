@@ -55,6 +55,6 @@ jobs:
       - name: Start backend
         run: docker compose -f docker-compose.ci.yml up -d backend
       - name: Connect Postgres to backend networks
-        run: docker network connect ${{ job.services.postgres.network }} book-backend
+        run: docker network connect ${{ job.services.postgres.network }} backend
       - name: Test
-        run: docker run --network container:book-backend jwilder/dockerize -wait http://localhost:3001/health -timeout 120s -wait-retry-interval 5s
+        run: docker run --network container:backend jwilder/dockerize -wait http://localhost:3001/health -timeout 120s -wait-retry-interval 5s
