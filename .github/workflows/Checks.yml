@@ -49,7 +49,7 @@ jobs:
         uses: ./.github/workflows/actions/setup-environment
 
       - name: Run database update
-        run: npm run db:deploy && npm run db:seed
+        run: npm run db:deploy && npm run db:generate && npm run db:seed
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
       - name: Start backend
