@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+      args:
+        VERSION: 0.0.0-local
+    container_name: backend_service
+    environment:
+      DATABASE_URL: postgresql://example_user:example_password@postgres:5432/open_library_explorer
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    container_name: frontend_service
+    ports:
+      - "8080:8080"
+    environment:
+      REACT_APP_BACKEND_URL: http://localhost:3000
+    command: npm start
+
+  postgres:
+    image: postgres:15.5-alpine
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-example_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-example_password}
+      POSTGRES_DB: ${POSTGRES_DB:-open_library_explorer}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  test-db:
+    image: postgres:15.5-alpine
+    container_name: test_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-example_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-example_password}
+      POSTGRES_DB: ${POSTGRES_DB:-open_library_explorer_test}
+    ports:
+      - "5433:5432"
+    volumes:
+      - test_db_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+  test_db_data:
