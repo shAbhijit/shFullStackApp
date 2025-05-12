@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  backend:
+    container_name: books-backend
+    image: backend
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+      args:
+        COMMIT_SHA: someCommitSha
+        BUILD_START: unspecified
+        VERSION: 0.0.0-ci
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
+      - BACKEND_API_PORT=3001
+    ports:
+      - '3001:3001'
